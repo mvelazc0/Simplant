@@ -1,4 +1,5 @@
-﻿using System;
+﻿using C2Sim.Lib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,9 @@ namespace C2Sim
     {
         static void Main(string[] args)
         {
-            Lib.DnsImplantSimulator dnsim = new Lib.DnsImplantSimulator();
+            DnsImplantSimulator dnsim = new DnsImplantSimulator();
             dnsim.run();
         }
     }
+
 }
