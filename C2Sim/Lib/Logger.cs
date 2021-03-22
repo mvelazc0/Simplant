@@ -59,10 +59,18 @@ namespace C2Sim.Lib
         {
             WriteFormattedLog(LogLevel.TINFO, text);
         }
-        public void StartDnsBeacon()
+        public void SimulationHeader(string type)
         {
-            WriteFormattedLog(LogLevel.TINFO, String.Format("Starting DNS Implant Simulation"));
-            WriteFormattedLog(LogLevel.TINFO, String.Format("running from {0} with PID:{1} as {2}", Assembly.GetEntryAssembly().Location, Process.GetCurrentProcess().Id, WindowsIdentity.GetCurrent().Name));
+            SimulationStart(type);
+            SimulationDetails();
+        }
+        public void SimulationStart(string type)
+        {
+            WriteFormattedLog(LogLevel.TINFO, String.Format("Starting {0} C2 Implant Simulator on {1}", type, Environment.MachineName));
+        }
+        public void SimulationDetails()
+        {
+            WriteFormattedLog(LogLevel.TINFO, String.Format("Simulator running from {0} with PID:{1} as {2}", Assembly.GetEntryAssembly().Location, Process.GetCurrentProcess().Id, WindowsIdentity.GetCurrent().Name));
         }
         private void WriteLine(string text, bool append = true)
         {

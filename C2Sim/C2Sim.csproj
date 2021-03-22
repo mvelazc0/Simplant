@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lib\HttpImplantSimulator.cs" />
     <Compile Include="Lib\Logger.cs" />
     <Compile Include="Lib\DnsImplantSimulator.cs" />
     <Compile Include="Program.cs" />

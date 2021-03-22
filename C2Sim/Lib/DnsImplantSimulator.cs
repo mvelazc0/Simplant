@@ -9,7 +9,7 @@ using System.Threading;
 namespace C2Sim.Lib
 {
 
-    public class DnsImplantSimulator
+    class DnsImplantSimulator
     {
 
         public string domain { get; set; } = "getbobspizza.com";
@@ -21,7 +21,7 @@ namespace C2Sim.Lib
         public DnsImplantSimulator()
         {
             logger = new Lib.Logger(AppDomain.CurrentDomain.BaseDirectory + "beaconsim.log");
-            logger.StartDnsBeacon();
+            logger.SimulationHeader("DNS");
         }
 
         public static string RandomString(int length)
@@ -35,24 +35,31 @@ namespace C2Sim.Lib
 
         }
 
-        public static bool TxtDnsResolution(string fqdn)
+        public static void TxtResolution(string fqdn, int type = 3)
         {
-            try
-            {
-                logger.TimestampInfo(String.Format("Resolving TXT record for ", fqdn));
-                IPHostEntry hostInfo = Dns.GetHostEntry(fqdn);
-                return true;
-            }
-            
-            catch
-            {
-                return false;
-            }
-        }
+            QueryType querytype;
 
-        public static void TxtResolution(string fqdn)
-        {
-            logger.TimestampInfo(String.Format("Resolving TXT record for {0}", fqdn));
+            switch (type)
+            {
+                case 1:
+                    querytype = QueryType.TXT;
+                    break;
+
+                case 2:
+                    querytype = QueryType.A;
+                    break;
+
+                case 3:
+                    querytype = QueryType.AAAA;
+                    break;
+
+                default:
+                    querytype = QueryType.TXT;
+                    break;
+
+            }
+                 
+            logger.TimestampInfo(String.Format("Resolving {0} record for {1}", querytype.ToString(), fqdn));
             var lookup = new LookupClient();
 
             try

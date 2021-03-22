@@ -12,6 +12,9 @@ namespace C2Sim
         {
             DnsImplantSimulator dnsim = new DnsImplantSimulator();
             dnsim.run();
+
+            //HttpImplantSimulator httpsim = new HttpImplantSimulator();
+            //httpsim.run();
         }
     }
 
