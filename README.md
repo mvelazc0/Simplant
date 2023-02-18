@@ -1,2 +1,2 @@
-# C2Sim
+# SimPlant
 Command &amp; Control Implant Simulator
